@@ -4,6 +4,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,6 +25,6 @@ class Logistics {
 
     private LocalDate startDate;
     private LocalDate finishDate;
-    private double priceOfSend;
-
+    private double priceOfSend; @Size(min =10, max=10 ,message = "El número de guía debe tener 10 caracteres")
+    private String guideNumber;
 }
