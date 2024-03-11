@@ -18,7 +18,6 @@ import java.util.List;
 @Table(name ="delivery_port" )
 public class DeliveryPort extends  RegistrationLocation {
 
-    private  String aaa;
 
     @OneToMany(mappedBy = "deliveryPort" ,targetEntity = LogisticMaritime.class)
     @JsonIgnore

@@ -3,24 +3,19 @@ package com.techincalPractice.Logistic.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-
-@NoArgsConstructor
+ @NoArgsConstructor
 
 @AllArgsConstructor
 @MappedSuperclass
-public class RegistrationLocation {
+public class Persons {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
     private String name;
-    private String deparment;
-    private String country;
-    private  String ubication;
-
-
+    private String phone;
+    @Column(unique = true)
+    private Integer cedula;
 
 }

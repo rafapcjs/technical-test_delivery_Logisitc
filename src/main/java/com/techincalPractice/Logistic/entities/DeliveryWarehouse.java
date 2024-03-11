@@ -17,12 +17,10 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name ="delivery_wareHouse" )
 public class DeliveryWarehouse extends  RegistrationLocation {
-    private  String aaa;
 
-
-    @OneToMany(mappedBy = "deliveryWarehouse" , orphanRemoval = true ,fetch = FetchType.LAZY,cascade = CascadeType.ALL, targetEntity = DeliveryWarehouse.class)
+    @OneToMany(mappedBy = "deliveryWarehouse", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity =LogisitcLand.class)
     @JsonIgnore
-    private List<LogisitcLand> logisitcLandList= new ArrayList<>();
+    private List<LogisitcLand> logisticLandList = new ArrayList<>();
 
 
 }

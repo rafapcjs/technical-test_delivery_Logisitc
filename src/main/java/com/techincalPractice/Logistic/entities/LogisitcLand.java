@@ -16,15 +16,23 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name ="logisitc_land" )
+@Table(name = "logisitc_land")
 public class LogisitcLand extends  Logistics{
 
     @Pattern(regexp="[A-Z]{3}[0-9]{3}", message="El formato de la placa debe ser de 3 letras seguidas de 3 números")
     private String licensePlate;
 
-    @ManyToOne(targetEntity = LogisitcLand.class , cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_delivery_Warehpuse",nullable = false)
+    @ManyToOne(targetEntity = DeliveryWarehouse.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_delivery_warehouse", nullable = false)
     @JsonIgnore
     private DeliveryWarehouse deliveryWarehouse;
+
+    @ManyToOne(targetEntity = Customer.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinColumn(name = "id_customer", nullable = false)
+    private Customer customer;
+
+
+
 
 }

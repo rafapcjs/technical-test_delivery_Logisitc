@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name ="maritime" )
+@Table(name ="Logistic_maritime" )
 public class LogisticMaritime extends  Logistics{
 
 
@@ -30,6 +30,14 @@ public class LogisticMaritime extends  Logistics{
     @JoinColumn(name = "id_delivery_port",nullable = false)
     @JsonIgnore
     private DeliveryPort  deliveryPort;
+
+
+    @ManyToOne(targetEntity =  Customer.class,fetch = FetchType.LAZY ,cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JoinColumn(name = "id_customer" ,nullable = false)
+    private Customer customer;
+
+
 
 
 
