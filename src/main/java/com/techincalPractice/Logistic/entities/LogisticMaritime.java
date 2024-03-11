@@ -1,9 +1,7 @@
 package com.techincalPractice.Logistic.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,10 +17,11 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name ="maritime" )
 public class LogisticMaritime extends  Logistics{
-
+    @ManyToOne(targetEntity = DeliveryPort.class , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_delivery_port",nullable = false)
+    @JsonIgnore
+    private DeliveryPort  deliveryPort;
 
     private  String aaa;
-@OneToMany(mappedBy = "logisticMaritime" ,targetEntity = DeliveryPort.class)
-@JsonIgnore
-    private List<DeliveryPort>deliveryPortList= new ArrayList<>();
+
 }

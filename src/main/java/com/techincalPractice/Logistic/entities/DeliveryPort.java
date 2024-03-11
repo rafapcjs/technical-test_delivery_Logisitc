@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @Builder
@@ -17,8 +20,9 @@ public class DeliveryPort extends  RegistrationLocation {
 
     private  String aaa;
 
-    @ManyToOne(targetEntity = LogisticMaritime.class , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_logist_marine",nullable = false)
+    @OneToMany(mappedBy = "deliveryPort" ,targetEntity = LogisticMaritime.class)
     @JsonIgnore
-    private LogisticMaritime  logisticMaritime;
+    private List<LogisticMaritime> logisticMaritimes= new ArrayList<>();
+
+
 }

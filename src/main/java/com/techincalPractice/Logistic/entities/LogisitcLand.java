@@ -18,7 +18,10 @@ import java.util.List;
 @Table(name ="logisitc_land" )
 public class LogisitcLand extends  Logistics{
     private  String aaa;
-    @OneToMany(mappedBy = "logisitcLand" , orphanRemoval = true ,fetch = FetchType.LAZY,cascade = CascadeType.ALL, targetEntity = DeliveryWarehouse.class)
+
+    @ManyToOne(targetEntity = LogisitcLand.class , cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_delivery_Warehpuse",nullable = false)
     @JsonIgnore
-    private List<LogisitcLand> logisitcLandList= new ArrayList<>();
+    private DeliveryWarehouse deliveryWarehouse;
+
 }
